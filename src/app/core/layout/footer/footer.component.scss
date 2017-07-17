@@ -1,0 +1,65 @@
+@import './../../../../scss/colors';
+@import './../../../../scss/colors-social';
+
+.footer{
+    margin-top: auto;
+    background-color: $second_color;
+    .wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__title{
+        font-size: .7em;
+        margin: 0;
+        color: $default_second_color;
+        text-align: left;
+        text-transform: uppercase;
+    }
+    &__contact{
+        margin: .5em 0;
+        &-social{
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: right;
+            &__item{
+                padding: .1em;
+                font-size: .7em;
+                a{
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: none;
+                        outline: 0;
+                    }
+                    .fa{
+                        width: 20px;
+                        height: 20px;
+                        line-height: 20px;
+                        text-align: center;
+                        color: $default_second_color;
+                        transition: all 0.3s ease-in-out;
+                        border-radius: 50%;
+                        &-facebook{
+                            background-color: $bg_facebook;
+                        }
+                        &-linkedin{
+                            background-color: $bg_linkedin;
+                        }
+                        &-github{
+                            background-color: $bg_github;
+                        }
+                        &-envelope{
+                            background-color: $bg_envelope;
+                        }
+                        &:hover,
+                        &:active{
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

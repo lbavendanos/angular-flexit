@@ -1,0 +1,19 @@
+.content-wrap{
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-title{
+        font-size: 5em;
+        font-weight: 900;
+        color: $primary_color;
+        span{
+            color: $second_color;
+        }
+    }
+    &-info{
+        text-align: center;
+        color: $fourth_color;
+    }
+}

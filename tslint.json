@@ -110,13 +110,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "fit",
+      "fi",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "fit",
+      "fi",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import './scss/variables';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import '~font-awesome/scss/font-awesome';
+@import '~bootstrap/scss/bootstrap';
+
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: $default_second_color;
+}
+
+fi-layout{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    fi-footer{
+        margin-top: auto;
+    }
+}

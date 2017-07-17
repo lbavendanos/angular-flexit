@@ -1,0 +1,79 @@
+<div class="container animated fast fadeIn">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-6">
+      <form novalidate [formGroup]="registerGroup" (ngSubmit)="onSubmit(registerGroup)">
+        <fieldset>
+          <legend>REGISTRAR</legend>
+          <div class="form-group" 
+              [ngClass]="{ 'has-danger': (registerGroup.get('name').hasError('required') || registerGroup.get('name').hasError('maxlength')) && registerGroup.get('name').touched }">
+            <label for="example-name-input" class="col-form-label">Nombre</label>
+            <input class="form-control" type="text" placeholder="Escribir nombre" id="example-name-input" formControlName="name">
+            <!-- Errors -->
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('name').hasError('required') && registerGroup.get('name').touched">
+              <small>Nombre es obligatorio</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('name').hasError('maxlength') && registerGroup.get('name').touched">
+              <small>El nombre no puede tener más de 255 caracteres.</small>
+            </div>
+          </div>
+          <div class="form-group" 
+              [ngClass]="{ 'has-danger': (registerGroup.get('email').hasError('required') || registerGroup.get('email').hasError('email') || registerGroup.get('email').hasError('maxlength') || registerGroup.get('email').hasError('unique')) && registerGroup.get('email').touched }">
+            <label for="example-email-input" class="col-form-label">Email</label>
+            <input class="form-control" type="email" placeholder="Escribir email" id="example-email-input" formControlName="email">
+            <!-- Errors -->
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('email').hasError('required') && registerGroup.get('email').touched">
+              <small>Email es obligatorio</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="!registerGroup.get('email').hasError('required') && registerGroup.get('email').hasError('email') && registerGroup.get('email').touched">
+              <small>El email es inválido.</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('email').hasError('maxlength') && registerGroup.get('email').touched">
+              <small>El email no puede tener más de 255 caracteres.</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('email').hasError('unique')">
+              <small>El email ya está en uso.</small>
+            </div>
+          </div>
+          <div class="form-group"
+              [ngClass]="{ 'has-danger': ((registerGroup.get('password').hasError('required') || registerGroup.get('password').hasError('minlength')) && registerGroup.get('password').touched) }">
+            <label for="example-password-input" class="col-form-label">Password</label>
+            <input class="form-control" type="password" placeholder="Escribir password" id="example-password-input" formControlName="password">
+            <!-- Errors -->
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('password').hasError('required') && registerGroup.get('password').touched">
+              <small>Password es obligatorio</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('password').hasError('minlength') && registerGroup.get('password').touched">
+              <small>El Password debe tener al menos 6 caracteres.</small>
+            </div>
+          </div>
+          <div class="form-group"
+              [ngClass]="{ 'has-danger': (registerGroup.get('password_confirmation').hasError('required') && registerGroup.get('password_confirmation').touched) }">
+            <label for="example-password-confirmation-input" class="col-form-label">Confirmación</label>
+            <input class="form-control" type="password" placeholder="Escribir confirmación" id="example-password-confirmation-input" formControlName="password_confirmation">
+            <!-- Errors -->
+            <div class="form-control-feedback"
+                *ngIf="registerGroup.get('password_confirmation').hasError('required') && registerGroup.get('password_confirmation').touched">
+              <small>Confirmación es obligatorio</small>
+            </div>
+          </div>
+          <div class="form-group has-danger"
+              *ngIf="!registerGroup.get('password').hasError('required') && !registerGroup.get('password_confirmation').hasError('required') && registerGroup.hasError('matchPassword') && registerGroup.get('password').touched && registerGroup.get('password_confirmation').touched">
+              <div class="form-control-feedback">
+                <small>La confirmación de contraseña no coincide.</small>
+              </div>
+          </div>
+          <a [routerLink]="['/']" class="btn btn-primary">Cancelar</a>
+          <button type="submit" class="btn btn-primary" [disabled]="registerGroup.invalid">Registrar</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

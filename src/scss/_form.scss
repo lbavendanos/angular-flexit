@@ -1,0 +1,48 @@
+.container>.row{
+    min-height: 70vh;
+}
+
+fieldset{
+    border: 1px solid $second_color;
+    padding: 2em;
+    legend{
+        text-align: center;
+        width: 50%;
+        color: $second_color;
+    }
+
+    .col-form-label{
+        padding: 0;
+    }
+
+    .form-check {
+        margin-bottom: 2.5rem;
+    }
+
+    a.btn-link{
+        background: none;
+        border: none;
+        padding: 0;
+        margin-bottom: 1em;
+        color: $second_color;
+        text-align: left
+    }
+
+    a{
+        background-color: $second_color;
+        border-color: $second_color;
+        &:focus{
+            color: $default_second_color;
+            box-shadow: 0 0 0 2px lighten($second_color, 30%);
+        }
+    }
+
+    button[type="submit"]{
+        background-color: $primary_color;
+        border-color: $primary_color;
+        float: right;
+        &:focus{
+            box-shadow: 0 0 0 2px lighten($primary_color, 30%);
+        }
+    }
+}

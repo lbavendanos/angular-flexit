@@ -1,0 +1,10 @@
+@import './../../scss/colors';
+@import './../../scss/info';
+
+ul{
+    padding: 0;
+    list-style: none;
+    strong{
+        color: $second_color;
+    }
+}

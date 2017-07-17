@@ -1,0 +1,56 @@
+<div class="container animated fast fadeIn">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-6">
+      <form novalidate [formGroup]="loginGroup" (ngSubmit)="onSubmit(loginGroup)">
+        <fieldset>
+          <legend>INICIAR SESIÓN</legend>
+          <alert *ngIf="alert.visible" [type]="alert.type" dismissible="true">
+            <h4 class="alert-heading">{{ alert.title }}</h4>
+            <p class="mb-0">{{ alert.message }}</p>
+          </alert>
+          <div class="form-group" 
+              [ngClass]="{ 'has-danger': (loginGroup.get('email').hasError('required') || loginGroup.get('email').hasError('email') || loginGroup.get('email').hasError('maxlength')) && loginGroup.get('email').touched }">
+            <label for="example-email-input" class="col-form-label">Email</label>
+            <input class="form-control" type="email" placeholder="Escribir email" id="example-email-input" formControlName="email">
+            <!-- Errors -->
+            <div class="form-control-feedback"
+                *ngIf="loginGroup.get('email').hasError('required') && loginGroup.get('email').touched">
+              <small>Email es obligatorio</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="!loginGroup.get('email').hasError('required') && loginGroup.get('email').hasError('email') && loginGroup.get('email').touched">
+              <small>El email es inválido.</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="loginGroup.get('email').hasError('maxlength') && loginGroup.get('email').touched">
+              <small>El email no puede tener más de 255 caracteres.</small>
+            </div>
+          </div>
+          <div class="form-group"
+              [ngClass]="{ 'has-danger': ((loginGroup.get('password').hasError('required') || loginGroup.get('password').hasError('minlength')) && loginGroup.get('password').touched) }">
+            <label for="example-password-input" class="col-form-label">Password</label>
+            <input class="form-control" type="password" placeholder="Escribir password" id="example-password-input" formControlName="password">
+            <!-- Errors -->
+            <div class="form-control-feedback"
+                *ngIf="loginGroup.get('password').hasError('required') && loginGroup.get('password').touched">
+              <small>Password es obligatorio</small>
+            </div>
+            <div class="form-control-feedback"
+                *ngIf="loginGroup.get('password').hasError('minlength') && loginGroup.get('password').touched">
+              <small>El Password debe tener al menos 6 caracteres.</small>
+            </div>
+          </div>
+          <a [routerLink]="['/password/reset']" class="btn btn-link form-control">¿Olvidaste tu password?</a>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" formControlName="remember">
+              Recuérdame
+            </label>
+          </div>
+          <a [routerLink]="['/']" class="btn btn-primary">Cancelar</a>
+          <button type="submit" class="btn btn-primary" [disabled]="loginGroup.invalid">Login</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

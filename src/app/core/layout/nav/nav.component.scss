@@ -1,0 +1,73 @@
+@import './../../../../scss/colors';
+
+.navbar{
+    padding: 1.2em 0;
+    &-toggleable{
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        .navbar-collapse{
+            display: flex !important;
+            width: 100%;
+        }
+    }
+    &-brand{
+        font-size: 2em;
+        font-weight: 900;
+        color: $primary_color;
+        span{
+            color: $second_color;
+        }
+        &:focus,
+        &:hover{
+            color: $primary_color;
+            text-decoration: none;
+            outline: 0;
+        }        
+    }
+
+    &-nav{
+        flex-direction: row;
+        .nav-item{
+            padding: 0 .5em;
+            font-size: .8em;
+            text-transform: uppercase;
+            &:last-child {
+                padding: 0 0 0 .5em;
+            } 
+            &.active{
+                a{
+                    color: $primary_color;
+                }
+            }
+            a{
+                color: $third_color;
+                &:focus,
+                &:hover{
+                    color: $primary_color;
+                    text-decoration: none;
+                    outline: 0;
+                }
+            }
+
+            .dropdown-menu{
+                position: absolute;
+                float: left;
+                padding: 0.1em 0;
+                .dropdown-item{
+                    font-size: .65em;
+                    padding: .3em 0;
+                    text-align: center;
+                    &:focus,
+                    &:hover{
+                        background: none;
+                    }
+                    &.active{
+                        color: $primary_color;
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+}
