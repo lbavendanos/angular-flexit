@@ -9,10 +9,14 @@ import { AlertModule } from 'ngx-bootstrap';
 // Own Components
 import { LoginComponent } from './login.component';
 
+// Own Guards
+import { UnauthGuard } from '../shared/guard/unauth.guard';
+
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [UnauthGuard],
   }
 ]
 

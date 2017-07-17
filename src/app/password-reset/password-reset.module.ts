@@ -9,10 +9,14 @@ import { AlertModule } from 'ngx-bootstrap';
 // Own Components
 import { PasswordResetComponent } from './password-reset.component';
 
+// Own Guards
+import { UnauthGuard } from '../shared/guard/unauth.guard';
+
 const routes: Routes = [
   {
     path: '',
-    component: PasswordResetComponent
+    component: PasswordResetComponent,
+    canActivate: [UnauthGuard],
   }
 ]
 

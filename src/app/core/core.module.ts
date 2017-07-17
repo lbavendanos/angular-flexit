@@ -17,6 +17,7 @@ import { AuthService } from '../shared/services/auth.service';
 
 // Own Guards
 import { AuthGuard } from '../shared/guard/auth.guard';
+import { UnauthGuard } from '../shared/guard/unauth.guard';
 
 const routes: Routes = [
   {
@@ -27,22 +28,26 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: './../login/login.module#LoginModule',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canLoad: [UnauthGuard]
   },
   {
     path: 'register',
     loadChildren: './../register/register.module#RegisterModule',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canLoad: [UnauthGuard]
   },
   {
     path: 'password/reset',
     loadChildren: './../password-recovery/password-recovery.module#PasswordRecoveryModule',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canLoad: [UnauthGuard]
   },
   {
     path: 'password/reset/:token',
     loadChildren: './../password-reset/password-reset.module#PasswordResetModule',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canLoad: [UnauthGuard]
   },
   {
     path: 'dashboard',
@@ -67,7 +72,8 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UnauthGuard
   ],
   exports: [
     LayoutComponent

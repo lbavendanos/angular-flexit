@@ -6,10 +6,14 @@ import { RouterModule, Routes } from '@angular/router';
 // Own Components
 import { RegisterComponent } from './register.component';
 
+// Own Guards
+import { UnauthGuard } from '../shared/guard/unauth.guard';
+
 const routes: Routes = [
   {
     path: '',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [UnauthGuard],
   }
 ]
 

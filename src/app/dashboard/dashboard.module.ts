@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Own Components
 import { DashboardComponent } from './dashboard.component';
+
 // Own Guards
 import { AuthGuard } from '../shared/guard/auth.guard';
 
