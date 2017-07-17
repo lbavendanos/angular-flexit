@@ -5,6 +5,8 @@ import { Subject } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
+import { environment } from '../../../environments/environment';
+
 import { UserRegister } from '../interfaces/user-register';
 import { UserLogin } from '../interfaces/user-login';
 import { UserRecovery } from '../interfaces/user-recovery';
@@ -13,13 +15,13 @@ import { UserReset } from '../interfaces/user-reset';
 @Injectable()
 export class AuthService {
 
-  url = 'http://flexit-api.dev/api';
+  apiUrl = environment.apiUrl;
   authUserSubjet = new Subject<any>();
 
   constructor(private http: Http) { }
 
   register(body: UserRegister): Observable<any> {
-    return this.http.post(`${this.url}/auth/register`, body, { headers: this.createHeaders() })
+    return this.http.post(`${this.apiUrl}/auth/register`, body, { headers: this.createHeaders() })
                       .map((response: Response) => {
                         return {token: response.json().token};
                       })
@@ -29,7 +31,7 @@ export class AuthService {
   }
 
   login(body: UserLogin): Observable<any> {
-    return this.http.post(`${this.url}/auth/login`, body, { headers: this.createHeaders() })
+    return this.http.post(`${this.apiUrl}/auth/login`, body, { headers: this.createHeaders() })
                       .map((response: Response) => {
                         return {token: response.json().token};
                       })
@@ -39,14 +41,14 @@ export class AuthService {
   }
 
   recovery(body: UserRecovery): Observable<any> {
-    return this.http.post(`${this.url}/auth/recovery`, body, { headers: this.createHeaders() })
+    return this.http.post(`${this.apiUrl}/auth/recovery`, body, { headers: this.createHeaders() })
                       .map((response: Response) => {
                         return response.json();
                       });
   }
 
   reset(body: UserReset): Observable<any> {
-    return this.http.post(`${this.url}/auth/reset`, body, { headers: this.createHeaders() })
+    return this.http.post(`${this.apiUrl}/auth/reset`, body, { headers: this.createHeaders() })
                       .map((response: Response) => {
                         return {token: response.json().token};
                       })
@@ -56,7 +58,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(`${this.url}/auth/logout`, [], { headers: this.createHeadersToken(this.getToken()) })
+    return this.http.post(`${this.apiUrl}/auth/logout`, [], { headers: this.createHeadersToken(this.getToken()) })
                       .map((response: Response) => {
                         return response.json();
                       })
@@ -66,7 +68,7 @@ export class AuthService {
   }
 
   user(): Observable<any> {
-    return this.http.get(`${this.url}/user`, { headers: this.createHeadersToken(this.getToken()) })
+    return this.http.get(`${this.apiUrl}/user`, { headers: this.createHeadersToken(this.getToken()) })
                       .map((response: Response) => {
                         return response.json();
                       })
