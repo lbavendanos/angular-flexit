@@ -1,7 +1,7 @@
 # ANGULAR FLEX IT
 Frontend para el el sistema de Logueo, desarrollado en Angular 4.
 
-Plugin utilizados:
+Plugin utilizado:
 * Ngx-bootstrap - [valor-software/ngx-bootstrap](https://github.com/valor-software/ngx-bootstrap)
 
 BackEnd:
