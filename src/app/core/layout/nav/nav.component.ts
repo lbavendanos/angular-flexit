@@ -16,6 +16,9 @@ export class NavComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+      // se subscribe a los eventos emitidos en los modulos Dashboard y Home
+      // para recuperar los datos del usuario e utilizarlos en el nav
+      // ejmplo: el nombre de usuario.
       this.authService.getUser()
                         .subscribe(
                           (response) => {
@@ -28,6 +31,7 @@ export class NavComponent implements OnInit {
                       );
   }
 
+  // cerrar sessión
   logout() {
     this.authService.logout()
                         .subscribe(

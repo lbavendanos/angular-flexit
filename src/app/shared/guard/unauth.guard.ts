@@ -17,6 +17,7 @@ export class UnauthGuard implements CanLoad, CanActivate {
     return this.checkLogin();
   }
 
+  // Redirige a /dashboard si es un usuario logueado y quiere acceder a las rutas /login /register
   checkLogin(): boolean {
     if (!this.authService.isLoggedIn()) { return true; }
 

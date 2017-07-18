@@ -17,6 +17,7 @@ export class AuthGuard implements CanLoad, CanActivate {
     return this.checkLogin();
   }
 
+  // Redirige a /login si no es un usuario logueado
   checkLogin(): boolean {
     if (this.authService.isLoggedIn()) { return true; }
 

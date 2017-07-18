@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    // subcrivimos e internamente emite un evento para Nav
     this.authService.user().subscribe((response) => {
       this.user = response;
     });
