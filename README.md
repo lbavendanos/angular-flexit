@@ -12,8 +12,3 @@ BackEnd:
 1. Ejecutar el comando `git clone https://github.com/lbavendanos/angular-flexit.git flexit`.
 2. Ejecutar el comando `npm install`.
 4. Luego ejecutar el comando `npm start`.
-
-## Live
-
-* Backend - [Laravel/FlexIT-API](https://flexit-api.herokuapp.com/)
-* FrontEnd - [Angular/FlexIT](https://flexit.herokuapp.com/)
